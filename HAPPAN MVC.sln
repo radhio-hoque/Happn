@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAPPAN MVC", "HAPPAN MVC\HAPPAN MVC.csproj", "{8E1F235E-5861-4DA1-B877-F452B3C2FC23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E1F235E-5861-4DA1-B877-F452B3C2FC23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E1F235E-5861-4DA1-B877-F452B3C2FC23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E1F235E-5861-4DA1-B877-F452B3C2FC23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E1F235E-5861-4DA1-B877-F452B3C2FC23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6BC080CA-894D-46E7-B2B1-01E891CB484C}
+	EndGlobalSection
+EndGlobal
