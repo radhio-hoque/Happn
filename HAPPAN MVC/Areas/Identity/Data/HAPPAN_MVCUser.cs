@@ -12,20 +12,22 @@ namespace HAPPAN_MVC.Areas.Identity.Data
     public class HAPPAN_MVCUser : IdentityUser
     {
         [PersonalData]
+        [Required]
         [Column(TypeName ="nvarchar(100)")]
         public string FirstName { get; set; }
 
         [PersonalData]
+        [Required]
         [Column(TypeName = "nvarchar(100)")]
         public string LastName { get; set; }
 
+        [Required]
         [EnumDataType(typeof(UserType))]
         public UserType Type { get; set; }
     }
 
     public enum UserType
     {
-        Admin = 1,
-        Member = 2
+        Member = 1
     }
 }

@@ -1,8 +1,10 @@
-﻿@{
-    ViewData["Title"] = "Project 2";
-    var projectName = ViewData["project2"] as string;
+﻿@model Project 
+@{
+    ViewData["Title"] = "Project 1";
+    var projectName = ViewData["project1"] as string;
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
+
 
 <!-- Content Wrapper. Contains page content -->
 
@@ -12,7 +14,7 @@
     <section class="content">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">@projectName</h3>
+                <h3 class="box-title">@Model.ProjectName </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
@@ -40,6 +42,12 @@
                                     Edit
                                 </a>
 
+                                <a class="btn btn-danger btn-sm" href="#">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </a>
+
                             </td>
                         </tr>
                         <tr>
@@ -56,6 +64,12 @@
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Edit
+                                </a>
+
+                                <a class="btn btn-danger btn-sm" href="#">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
                                 </a>
 
                             </td>
@@ -75,10 +89,14 @@
                                     </i>
                                     Edit
                                 </a>
-
+                                <a class="btn btn-danger btn-sm" href="#">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </a>
                             </td>
                         </tr>
-                        <tr>
+                        <tr >
                             <td>4.</td>
                             <td>Fix and squish bugs</td>
                             <td>
@@ -93,7 +111,11 @@
                                     </i>
                                     Edit
                                 </a>
-
+                                <a class="btn btn-danger btn-sm" href="#">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </a>
                             </td>
                         </tr>
 
@@ -106,3 +128,4 @@
     </section>
     <!-- /.content -->
 </div>
+<!-- /.content-wrapper ->

@@ -11,16 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - HAPPAN</title>
 
-    @*<environment include="Development">
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-            <link rel="stylesheet" href="~/css/site.css" />
-        </environment>
-        <environment exclude="Development">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        </environment>*@
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -107,93 +97,11 @@
                     <div class="info">
                         <a asp-area="Identity" asp-page="/Account/Manage/Index" class="d-block">@UserManager.GetUserName(User)!</a>
                     </div>
-                </div>
+                </div> 
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-open">
-                            <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-
-                                </p>
-                            </a>
-
-                        </li>
-                        <li class="nav-header">Projects</li>
-                        <li class="nav-item">
-                            <a asp-area="" asp-controller="AddProject" asp-action="Index" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Add Projects
-
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-puzzle-piece"></i>
-                                <p>
-                                    Current Projects
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-area="" asp-controller="CurrentProject" asp-action="Project1" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Bikash App</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-area="" asp-controller="CurrentProject" asp-action="Project2" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Pathao App</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-area="" asp-controller="CurrentProject" asp-action="Project3" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Nogad App</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-area="" asp-controller="CurrentProject" asp-action="Project4" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Sohoj App</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-area="" asp-controller="CurrentProject" asp-action="Project5" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>VPN App</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-area="" asp-controller="CurrentProject" asp-action="Project5" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Ubar App</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-header">Proposal</li>
-                        <li class="nav-item">
-                            <a asp-area="" asp-controller="Proposal" asp-action="Index" class="nav-link">
-                                <i class="fa fa-book"></i>
-                                <p>
-                                    Project Proposal
-
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
+                    @(await Component.InvokeAsync("Menu"))
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>

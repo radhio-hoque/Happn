@@ -100,11 +100,11 @@ namespace HAPPAN_MVC.Areas.Identity.Pages.Account
                         {
                             if(checkType.Type == UserType.Member)
                             {
-                                return RedirectToAction("Index","Home");
+                                return RedirectToAction("/");
                             }
-                            else if (checkType.Type == UserType.Admin)
+                            else 
                             {
-                                return RedirectToAction("Index", "AddProject");
+                                return RedirectToAction("Index", "Home");
                             }
                         }
                     }  

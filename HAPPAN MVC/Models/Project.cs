@@ -15,6 +15,15 @@ namespace HAPPAN_MVC.Models
         [Required]
         public string ProjectProgress { get; set; }
         [Required]
-        public string Status { get; set; }
+        [EnumDataType(typeof(Status))]
+        public Status Status { get; set; }
+        public List<ProjectTask> Tasks { get; set; }
+    }
+
+    public enum Status
+    {
+        Pending = 0,
+        Canceled = 1,
+        Success = 2
     }
 }

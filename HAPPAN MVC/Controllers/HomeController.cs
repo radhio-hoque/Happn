@@ -18,23 +18,19 @@ namespace HAPPAN_MVC.Controllers
     {
         private readonly HAPPAN_MVC_AuthDBContext hAPPAN_MVC_AuthDBContext;
 
+        
+
         public HomeController(HAPPAN_MVC_AuthDBContext hAPPAN_MVC_AuthDBContext)
         {
             this.hAPPAN_MVC_AuthDBContext = hAPPAN_MVC_AuthDBContext;
         }
 
-        public IEnumerable<Project> GetProjects { get; set; }
+
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var result = hAPPAN_MVC_AuthDBContext.Projects.ToList();
+            return View(result);
         }
     }
 }
