@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 namespace HAPPAN_MVC.Areas.Identity.Data
 {
     // Add profile data for application users by adding properties to the HAPPAN_MVCUser class
-    public class HAPPAN_MVCUser : IdentityUser
+    public class User : IdentityUser
     {
         [PersonalData]
         [Required]

@@ -9,8 +9,8 @@ namespace HAPPAN_MVC.Components
 {
     public class MenuViewComponent : ViewComponent
     {
-        private readonly HAPPAN_MVC_AuthDBContext hAPPAN_MVC_AuthDBContext;
-        public MenuViewComponent(HAPPAN_MVC_AuthDBContext hAPPAN_MVC_AuthDBContext)
+        private readonly HAPPANDBContext hAPPAN_MVC_AuthDBContext;
+        public MenuViewComponent(HAPPANDBContext hAPPAN_MVC_AuthDBContext)
         {
             this.hAPPAN_MVC_AuthDBContext = hAPPAN_MVC_AuthDBContext;
         }

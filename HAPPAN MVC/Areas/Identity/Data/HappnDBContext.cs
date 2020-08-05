@@ -10,14 +10,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAPPAN_MVC.Data
 {
-    public class HAPPAN_MVC_AuthDBContext : IdentityDbContext<HAPPAN_MVCUser>
+    public class HAPPANDBContext : IdentityDbContext<User>
     {
-        public HAPPAN_MVC_AuthDBContext(DbContextOptions<HAPPAN_MVC_AuthDBContext> options)
+        public HAPPANDBContext(DbContextOptions<HAPPANDBContext> options)
             : base(options)
         {
         }
 
         public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<ProjectTask> Tasks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

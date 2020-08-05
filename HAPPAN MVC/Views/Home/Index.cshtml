@@ -93,12 +93,8 @@
                                         </i>
                                         View
                                     </a>
-
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.ProjectId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete this record?')"><i class="fas fa-trash">  Delete</i></a>
+                                  
                                 </td>
                             </tr>
                         }

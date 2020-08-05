@@ -27,7 +27,7 @@ namespace HAPPAN_MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<HAPPAN_MVC_AuthDBContext>(
+            services.AddDbContext<HAPPANDBContext>(
                 options => options.UseSqlServer(
                     Configuration.GetConnectionString("HAPPAN_MVC_AuthDBContextConnection")));
             services.AddControllersWithViews();

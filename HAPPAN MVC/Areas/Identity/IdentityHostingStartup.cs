@@ -16,16 +16,16 @@ namespace HAPPAN_MVC.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<HAPPAN_MVC_AuthDBContext>(options =>
+                services.AddDbContext<HAPPANDBContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("HAPPAN_MVC_AuthDBContextConnection")));
 
-                services.AddDefaultIdentity<HAPPAN_MVCUser>(options => {
+                services.AddDefaultIdentity<User>(options => {
                     options.SignIn.RequireConfirmedAccount = false;
                     options.Password.RequireLowercase = false;
                     options.Password.RequireUppercase = false;
                 })
-                    .AddEntityFrameworkStores<HAPPAN_MVC_AuthDBContext>();
+                    .AddEntityFrameworkStores<HAPPANDBContext>();
             });
         }
     }

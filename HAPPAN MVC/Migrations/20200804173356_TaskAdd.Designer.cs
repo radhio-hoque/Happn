@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HAPPAN_MVC.Migrations
 {
     [DbContext(typeof(HAPPANDBContext))]
-    [Migration("20200804123107_Init")]
-    partial class Init
+    [Migration("20200804173356_TaskAdd")]
+    partial class TaskAdd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace HAPPAN_MVC.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("HAPPAN_MVC.Areas.Identity.Data.HAPPAN_MVCUser", b =>
+            modelBuilder.Entity("HAPPAN_MVC.Areas.Identity.Data.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -118,6 +118,26 @@ namespace HAPPAN_MVC.Migrations
                     b.HasKey("ProjectId");
 
                     b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("HAPPAN_MVC.Models.ProjectTask", b =>
+                {
+                    b.Property<int>("TaskId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Label")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TaskName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TaskId");
+
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -266,7 +286,7 @@ namespace HAPPAN_MVC.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("HAPPAN_MVC.Areas.Identity.Data.HAPPAN_MVCUser", null)
+                    b.HasOne("HAPPAN_MVC.Areas.Identity.Data.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -275,7 +295,7 @@ namespace HAPPAN_MVC.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("HAPPAN_MVC.Areas.Identity.Data.HAPPAN_MVCUser", null)
+                    b.HasOne("HAPPAN_MVC.Areas.Identity.Data.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -290,7 +310,7 @@ namespace HAPPAN_MVC.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HAPPAN_MVC.Areas.Identity.Data.HAPPAN_MVCUser", null)
+                    b.HasOne("HAPPAN_MVC.Areas.Identity.Data.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -299,7 +319,7 @@ namespace HAPPAN_MVC.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("HAPPAN_MVC.Areas.Identity.Data.HAPPAN_MVCUser", null)
+                    b.HasOne("HAPPAN_MVC.Areas.Identity.Data.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

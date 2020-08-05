@@ -29,7 +29,7 @@
     <!-- Main content -->
     <section class="content">
         <form method="POST" asp-action="Index">
-
+          
             <div class="row">
                 <div class="col-md-6">
                     <div class="card card-primary">
@@ -42,7 +42,7 @@
                                 <label asp-for="ProjectName" class="control-label"></label>
                                 <input asp-for="ProjectName" class="form-control" />
                                 <span asp-validation-for="ProjectName" class="text-danger"></span>
-                               
+
                             </div>
                             <div class="form-group">
                                 <label for="inputDescription">Project Description</label>
@@ -54,7 +54,7 @@
 
                                 <label asp-for="Status" class="control-label"></label>
                                 <span asp-validation-for="Status" class="text-danger"></span>
-                                <select asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()"  class="form-control custom-select">
+                                <select asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()" class="form-control custom-select">
                                     <option selected="selected" value="">Select one</option>
                                 </select>
                             </div>
@@ -77,11 +77,6 @@
                     <div class="card card-secondary">
                         <div class="card-header">
                             <h3 class="card-title">Budget</h3>
-
-                            <div class="card-tools">
-                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                <i class="fas fa-minus"></i></button> -->
-                            </div>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
@@ -100,9 +95,9 @@
                                        class="form-control <?php if(!empty($errEstimatedProjectDuration)) echo " is-warning"; ?>
                             </div>
                             <div class="form-group">
-                                <label for="inputEstimatedDuration">Project Progress</label>
-                                <input type="number" name="estimatedProjectDuration" id="inputEstimatedDuration"
-                                       class="form-control <?php if(!empty($errEstimatedProjectDuration)) echo " is-warning"; ?>
+                                <label asp-for="ProjectProgress" class="control-label"></label>
+                                <input asp-for="ProjectProgress" class="form-control" />
+                                <span asp-validation-for="ProjectProgress" class="text-danger"></span>
                             </div>
                         </div>
                         <!-- /.card-body -->

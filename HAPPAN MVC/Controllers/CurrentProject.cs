@@ -9,8 +9,8 @@ namespace HAPPAN.Controllers
 {
     public class CurrentProject : Controller
     {
-        private readonly HAPPAN_MVC_AuthDBContext hAPPAN_MVC_AuthDBContext;
-        public CurrentProject(HAPPAN_MVC_AuthDBContext hAPPAN_MVC_AuthDBContext)
+        private readonly HAPPANDBContext hAPPAN_MVC_AuthDBContext;
+        public CurrentProject(HAPPANDBContext hAPPAN_MVC_AuthDBContext)
         {
             this.hAPPAN_MVC_AuthDBContext = hAPPAN_MVC_AuthDBContext;
         }
