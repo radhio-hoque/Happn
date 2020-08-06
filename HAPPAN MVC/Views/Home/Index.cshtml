@@ -31,8 +31,11 @@
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
-                            <th>
+                            @*<th>
                                 @Html.DisplayNameFor(model => model.ProjectId)
+                            </th>*@
+                            <th>
+                               Project Number
                             </th>
                             <th style="width: 30%">
                                 Team Members
@@ -50,12 +53,17 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @{int index = 1;}
                         @foreach (var item in Model)
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.ProjectId)
+                                    @index
+
                                 </td>
+                                @*<td>
+                                    @Html.DisplayFor(modelItem => item.ProjectId)
+                                </td>*@
 
                                 <td>
                                     <ul class="list-inline">
@@ -93,10 +101,12 @@
                                         </i>
                                         View
                                     </a>
+                                    <a asp-controller="AddProject" asp-action="Index" asp-route-id="@item.ProjectId" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i>Edit</a>
                                     <a asp-action="Delete" asp-route-id="@item.ProjectId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete this record?')"><i class="fas fa-trash">  Delete</i></a>
-                                  
+
                                 </td>
                             </tr>
+                            index++;
                         }
                     </tbody>
                 </table>

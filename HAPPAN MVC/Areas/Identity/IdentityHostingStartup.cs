@@ -20,7 +20,7 @@ namespace HAPPAN_MVC.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("HAPPAN_MVC_AuthDBContextConnection")));
 
-                services.AddDefaultIdentity<User>(options => {
+                services.AddDefaultIdentity<HAPPAN_MVCUser>(options => {
                     options.SignIn.RequireConfirmedAccount = false;
                     options.Password.RequireLowercase = false;
                     options.Password.RequireUppercase = false;

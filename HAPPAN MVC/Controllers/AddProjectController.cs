@@ -24,19 +24,22 @@ namespace HAPPAN.Controllers
             if (id == 0)
                 return View(new Project());
             else
+            
                 return View(hAPPAN_MVC_AuthDBContext.Projects.Find(id));
         }
 
         // POST: Project/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index([Bind("ProjectId,ProjectName,ProjectProgress,Status")] Project Projects)
         {
             if (ModelState.IsValid)
             {
-                hAPPAN_MVC_AuthDBContext.Add(Projects);
+                if (Projects.ProjectId == 0)
+                    hAPPAN_MVC_AuthDBContext.Add(Projects);
+                else
+                    hAPPAN_MVC_AuthDBContext.Update(Projects);
                 await hAPPAN_MVC_AuthDBContext.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
             }

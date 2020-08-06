@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HAPPAN_MVC.Data;
+using HAPPAN_MVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HAPPAN.Controllers
 {
@@ -14,17 +16,17 @@ namespace HAPPAN.Controllers
         {
             this.hAPPAN_MVC_AuthDBContext = hAPPAN_MVC_AuthDBContext;
         }
-        public IActionResult Index()
-        {
-            var result = hAPPAN_MVC_AuthDBContext.Projects.ToList();
-            return View();
-        }
+     
 
         public IActionResult Info(int projectId)
         {
-           var myProject = hAPPAN_MVC_AuthDBContext.Projects.Find(projectId);
-            ViewBag.ABc = myProject;
-            return View(myProject);
+            if(projectId == 0)
+            {
+                return Redirect("/");
+            }
+            IList<ProjectTask> projects = hAPPAN_MVC_AuthDBContext.Tasks.Where(c => c.ProjectID == projectId).ToList();
+            //var result = hAPPAN_MVC_AuthDBContext.Projects.ToList();
+            return View(projects);
         }
 
     }

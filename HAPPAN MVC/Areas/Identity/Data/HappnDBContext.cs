@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAPPAN_MVC.Data
 {
-    public class HAPPANDBContext : IdentityDbContext<User>
+    public class HAPPANDBContext : IdentityDbContext<HAPPAN_MVCUser>
     {
         public HAPPANDBContext(DbContextOptions<HAPPANDBContext> options)
             : base(options)

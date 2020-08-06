@@ -20,14 +20,14 @@ namespace HAPPAN_MVC.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<User> _signInManager;
-        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<HAPPAN_MVCUser> _signInManager;
+        private readonly UserManager<HAPPAN_MVCUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<User> userManager,
-            SignInManager<User> signInManager,
+            UserManager<HAPPAN_MVCUser> userManager,
+            SignInManager<HAPPAN_MVCUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -96,7 +96,7 @@ namespace HAPPAN_MVC.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName =Input.LastName, Type = Input.Type };
+                var user = new HAPPAN_MVCUser { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName =Input.LastName, Type = Input.Type };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

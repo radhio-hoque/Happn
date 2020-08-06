@@ -1,49 +1,59 @@
 ﻿@model IList<Project>
 
-<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-    <!-- Add icons to the links using the .nav-icon class
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
     with font-awesome or any other icon font library -->
-    <li class="nav-item menu-open">
-        <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link active">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-                Dashboard
+        <li class="nav-item menu-open">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link active">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    Dashboard
 
-            </p>
-        </a>
+                </p>
+            </a>
 
-    </li>
-    <li class="nav-header">Projects</li>
-    <li class="nav-item">
-        <a asp-area="" asp-controller="AddProject" asp-action="Index" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-                Add Projects
+        </li>
+        <li class="nav-header">Projects</li>
+        <li class="nav-item">
+            <a asp-area="" asp-controller="AddProject" asp-action="Index" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                    Add Projects
 
-            </p>
-        </a>
-    </li>
+                </p>
+            </a>
+        </li>
 
-    <li class="nav-item menu-open">
-        <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-puzzle-piece"></i>
-            <p>
-                Current Projects
-                <i class="right fas fa-angle-left"></i>
-            </p>
-        </a>
-        <ul class="nav nav-treeview">
+        <li class="nav-item menu-open">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-puzzle-piece"></i>
+                <p>
+                    Current Projects
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
 
-            @foreach (var project in Model)
-            {
-                <li class="nav-item">
-                    <a class="nav-link " href="/CurrentProject/Info?projectId=@project.ProjectId">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>@project.ProjectName</p>
-                    </a>
-                </li>
-            }
-        </ul>
-    </li>
+                @foreach (var project in Model)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link " href="/CurrentProject/Info?projectId=@project.ProjectId">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>@project.ProjectName</p>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </li>
 
-</ul>
+        <li class="nav-header">Proposal</li>
+        <li class="nav-item">
+            <a asp-area="" asp-controller="Proposal" asp-action="Index" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                    Proposal
+                </p>
+            </a>
+        </li>
+
+    </ul>

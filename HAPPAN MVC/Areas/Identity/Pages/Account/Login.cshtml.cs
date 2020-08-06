@@ -20,14 +20,14 @@ namespace HAPPAN_MVC.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<HAPPAN_MVCUser> _userManager;
+        private readonly SignInManager<HAPPAN_MVCUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
         private readonly HAPPANDBContext hAPPAN_MVC_AuthDBContext;
 
-        public LoginModel(SignInManager<User> signInManager, 
+        public LoginModel(SignInManager<HAPPAN_MVCUser> signInManager, 
             ILogger<LoginModel> logger,
-            UserManager<User> userManager, HAPPANDBContext hAPPAN_MVC_AuthDBContext)
+            UserManager<HAPPAN_MVCUser> userManager, HAPPANDBContext hAPPAN_MVC_AuthDBContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
