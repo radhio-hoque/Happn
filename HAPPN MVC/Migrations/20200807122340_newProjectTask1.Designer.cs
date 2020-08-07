@@ -4,14 +4,16 @@ using HAPPAN_MVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HAPPAN_MVC.Migrations
 {
     [DbContext(typeof(HAPPANDBContext))]
-    partial class HAPPANDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200807122340_newProjectTask1")]
+    partial class newProjectTask1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,30 +114,6 @@ namespace HAPPAN_MVC.Migrations
                     b.HasKey("ProjectId");
 
                     b.ToTable("Projects");
-                });
-
-            modelBuilder.Entity("HAPPAN_MVC.Models.ProjectTask", b =>
-                {
-                    b.Property<int>("TaskId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<float>("PercentageOfProject")
-                        .HasColumnType("real");
-
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TaskName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("TaskId");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -271,15 +249,6 @@ namespace HAPPAN_MVC.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("HAPPAN_MVC.Models.ProjectTask", b =>
-                {
-                    b.HasOne("HAPPAN_MVC.Models.Project", "Project")
-                        .WithMany("Tasks")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

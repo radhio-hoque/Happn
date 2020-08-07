@@ -13,8 +13,6 @@ namespace HAPPAN_MVC.Models
         [Required]
         public string ProjectName { get; set; }
         [Required]
-        public string ProjectProgress { get; set; }
-        [Required]
         [EnumDataType(typeof(Status))]
         public Status Status { get; set; }
         public ICollection<ProjectTask> Tasks { get; set; }

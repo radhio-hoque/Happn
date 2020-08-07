@@ -18,7 +18,7 @@ namespace HAPPAN.Controllers
             this.hAPPAN_MVC_AuthDBContext = hAPPAN_MVC_AuthDBContext;
         }
 
-        // GET: Employee/Create
+        // GET: Project/Create
         public IActionResult Index(int id = 0)
         {
             if (id == 0)
@@ -32,7 +32,7 @@ namespace HAPPAN.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index([Bind("ProjectId,ProjectName,ProjectProgress,Status")] Project Projects)
+        public async Task<IActionResult> Index([Bind("ProjectId,ProjectName,Status")] Project Projects)
         {
             if (ModelState.IsValid)
             {

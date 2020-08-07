@@ -15,7 +15,8 @@ namespace HAPPAN_MVC.Models
         public string TaskName { get; set; }
         [Required]
         public float PercentageOfProject { get; set; }
-        public int ProjectID { get; set; }
+        [ForeignKey("ProjectId")]
+        public int ProjectId { get; set; }
         public Project Project { get; set; }
     }
 }

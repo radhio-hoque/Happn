@@ -1,4 +1,4 @@
-﻿@model Project
+﻿@model ProjectTask
 
 @{
     ViewData["Title"] = "Add Project Page";
@@ -10,7 +10,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Add Project</h1>
+                <h1 class="m-0 text-dark">Add Project Task</h1>
             </div><!-- /.col -->
 
         </div><!-- /.row -->
@@ -30,33 +30,28 @@
     <section class="content">
         <form method="POST" asp-action="Index">
             <input type="hidden" asp-for="ProjectId" />
+            <input type="hidden" asp-for="TaskId" />
             <div class="row">
                 <div class="col-md-6">
                     <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">General</h3>
-
-                        </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label asp-for="ProjectName" class="control-label"></label>
-                                <input asp-for="ProjectName" class="form-control" />
-                                <span asp-validation-for="ProjectName" class="text-danger"></span>
+                                <label asp-for="TaskName" class="control-label"></label>
+                                <input asp-for="TaskName" class="form-control" />
+                                <span asp-validation-for="TaskName" class="text-danger"></span>
 
                             </div>
                             <div class="form-group">
-                                <label for="inputDescription">Project Description</label>
+                                <label for="inputDescription">Task Description</label>
                                 <textarea name="projectDescription" id="inputDescription"
                                           class="form-control" is-warning"; ?>
 									</textarea>
                             </div>
                             <div class="form-group">
+                                <label asp-for="PercentageOfProject" class="control-label"></label>
+                                <input asp-for="PercentageOfProject" class="form-control" />
+                                <span asp-validation-for="PercentageOfProject" class="text-danger"></span>
 
-                                <label asp-for="Status" class="control-label"></label>
-                                <span asp-validation-for="Status" class="text-danger"></span>
-                                <select asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()" class="form-control custom-select">
-                                    <option selected="selected" value="">Select one</option>
-                                </select>
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -66,7 +61,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <input type="submit" value="Create new Porject" class="btn btn-success float-right">
+                    <input type="submit" value="Create new Task" class="btn btn-success float-right">
                 </div>
             </div>
         </form>

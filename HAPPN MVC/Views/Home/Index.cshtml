@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HAPPAN_MVC.Models.Project>
+﻿@model IEnumerable<HAPPAN_MVC.Models.VMModels.VMProjects>
 @{
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
@@ -87,20 +87,25 @@
                                 </td>
                                 <td>
                                     <div class="progress progress-sm">
-                                        <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
+                                        @{var p = item.ProjectProgress + "%";}
+                                        <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width:@p ">
                                         </div>
                                     </div>
-                                    @Html.DisplayFor(modelItem => item.ProjectProgress)
+                                    @{ var po = item.ProjectProgress;}
+                                    @if (po > 0)
+                                    {
+                                        @Html.DisplayFor(modelItem => item.ProjectProgress)
+                                    }
+                                    else
+                                    {
+                                        <a>No Task Added</a>
+                                    }
+
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Status)
                                 </td>
                                 <td class="project-actions text-right">
-                                    <a asp-area="" asp-controller="CurrentProject" asp-action="Project1" class="btn btn-primary btn-sm">
-                                        <i class="fas fa-folder">
-                                        </i>
-                                        View
-                                    </a>
                                     <a asp-controller="AddProject" asp-action="Index" asp-route-id="@item.ProjectId" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i>Edit</a>
                                     <a asp-action="Delete" asp-route-id="@item.ProjectId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete this record?')"><i class="fas fa-trash">  Delete</i></a>
 
