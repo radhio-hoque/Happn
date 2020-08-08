@@ -7,7 +7,7 @@
 
 <h1>Info</h1>
 <p>
-    <a asp-area="" asp-controller="AddProjectTask" asp-action="Create">Create New Task</a>
+    <a asp-area="" asp-controller="AddProjectTask" asp-action="Index">Create New Task</a>
 </p>
 <table class="table">
     <thead>
@@ -46,17 +46,17 @@
                         <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width:@progress ">
                         </div>
                     </div>
-                    @Html.DisplayFor(modelItem => item.PercentageOfProject)
+                    @Html.DisplayFor(modelItem => item.PercentageOfProject)<a>%</a>
                 </td>
                 @*<td>
                         @Html.DisplayFor(modelItem => item.ProjectID)
                     </td>*@
 
-                <td class="project-actions text-right">
-                    <a class="btn btn-info btn-sm" href="#"><i class="fas fa-pencil-alt"></i>Edit</a>
-                    <a class="btn btn-danger btn-sm" href="#"><i class="fas fa-trash"></i>Delete</a>
+            <td class="project-actions text-right">
+                <a asp-controller="AddProjectTask" asp-action="Index" asp-route-id="@item.TaskId" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i>Edit</a>
+                <a asp-action="DeleteTask" asp-route-id="@item.TaskId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete this record?')"><i class="fas fa-trash">  Delete</i></a>
 
-                </td>
+            </td>
             </tr>
         }
     </tbody>

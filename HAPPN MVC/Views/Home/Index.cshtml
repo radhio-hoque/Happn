@@ -94,7 +94,7 @@
                                     @{ var po = item.ProjectProgress;}
                                     @if (po > 0)
                                     {
-                                        @Html.DisplayFor(modelItem => item.ProjectProgress)
+                                        @Html.DisplayFor(modelItem => item.ProjectProgress) <a>%</a>
                                     }
                                     else
                                     {
@@ -106,6 +106,11 @@
                                     @Html.DisplayFor(modelItem => item.Status)
                                 </td>
                                 <td class="project-actions text-right">
+                                    <a class="btn btn-primary btn-sm" href="/CurrentProject/Info?projectId=@item.ProjectId">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        View
+                                    </a>
                                     <a asp-controller="AddProject" asp-action="Index" asp-route-id="@item.ProjectId" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i>Edit</a>
                                     <a asp-action="Delete" asp-route-id="@item.ProjectId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete this record?')"><i class="fas fa-trash">  Delete</i></a>
 

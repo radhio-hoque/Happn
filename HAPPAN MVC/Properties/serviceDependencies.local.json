@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "mssql1": {
-      "type": "mssql.local",
-      "connectionId": "HAPPAN_MVC_AuthDBContextConnection"
-    }
-  }
-}

@@ -11,7 +11,7 @@ namespace HAPPAN_MVC.Models.VMModels
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }
         public string Tname { get; set; }
-        public float ProjectProgress { get; set; }
+        public int ProjectProgress { get; set; }
         [EnumDataType(typeof(Status))]
         public Status Status { get; set; }
         public List<VMTask> Task { get; set; }

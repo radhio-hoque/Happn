@@ -18,26 +18,8 @@ namespace HAPPAN_MVC.Controllers
             this.hAPPAN_MVC_AuthDBContext = hAPPAN_MVC_AuthDBContext;
         }
 
-        //// GET: AddProjectTask
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
-        //// GET: AddProjectTask/Details/5
-        //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
-
-        //// GET: AddProjectTask/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
-
         // GET: AddProjectTask/Create
-        public IActionResult Create(int id = 0)
+        public IActionResult Index(int id = 0)
         {
             if (id == 0)
                 return View(new ProjectTask());
@@ -48,7 +30,7 @@ namespace HAPPAN_MVC.Controllers
         // POST: AddProjectTask/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TaskId,TaskName,PercentageOfProject,ProjectId")] ProjectTask task)
+        public async Task<IActionResult> Index([Bind("TaskId,TaskName,PercentageOfProject,ProjectId")] ProjectTask task)
         {
             if (ModelState.IsValid)
             {
@@ -57,52 +39,9 @@ namespace HAPPAN_MVC.Controllers
                 else
                     hAPPAN_MVC_AuthDBContext.Update(task);
                 await hAPPAN_MVC_AuthDBContext.SaveChangesAsync();
-                return RedirectToAction("Index", "Home");
-
+                return RedirectToAction("Info", "CurrentProject");
             }
             return View(task);
         }
-
-        //// GET: AddProjectTask/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: AddProjectTask/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        //// GET: AddProjectTask/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: AddProjectTask/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 }
