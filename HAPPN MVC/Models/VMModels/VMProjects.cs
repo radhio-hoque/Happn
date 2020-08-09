@@ -15,6 +15,7 @@ namespace HAPPAN_MVC.Models.VMModels
         [EnumDataType(typeof(Status))]
         public Status Status { get; set; }
         public List<VMTask> Task { get; set; }
+        public List<VMTeam> Team { get; set; }
     }
     public class VMTask
     {
@@ -23,4 +24,13 @@ namespace HAPPAN_MVC.Models.VMModels
         public float Progress { get; set; }
 
     }
+
+    public class VMTeam
+    {
+        public int TeamId { get; set; }
+        public string TeamName { get; set; }
+
+    }
+
+
 }

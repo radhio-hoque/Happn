@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HAPPAN_MVC.Migrations
 {
     [DbContext(typeof(HAPPANDBContext))]
-    [Migration("20200807172906_StatusTypeAdd")]
-    partial class StatusTypeAdd
+    [Migration("20200808051112_TeamAdd3")]
+    partial class TeamAdd3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -123,8 +123,8 @@ namespace HAPPAN_MVC.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<float>("PercentageOfProject")
-                        .HasColumnType("real");
+                    b.Property<int>("PercentageOfProject")
+                        .HasColumnType("int");
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
@@ -138,6 +138,27 @@ namespace HAPPAN_MVC.Migrations
                     b.HasIndex("ProjectId");
 
                     b.ToTable("Tasks");
+                });
+
+            modelBuilder.Entity("HAPPAN_MVC.Models.Team", b =>
+                {
+                    b.Property<int>("TeamId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TeamName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TeamId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("Team");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -279,6 +300,15 @@ namespace HAPPAN_MVC.Migrations
                 {
                     b.HasOne("HAPPAN_MVC.Models.Project", "Project")
                         .WithMany("Tasks")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("HAPPAN_MVC.Models.Team", b =>
+                {
+                    b.HasOne("HAPPAN_MVC.Models.Project", "Project")
+                        .WithMany("teams")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

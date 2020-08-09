@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 
 namespace HAPPAN_MVC.Models
 {
-    public class ProjectTask
+    public class Team
     {
         [Key]
-        public int TaskId { get; set; }
+        public int TeamId { get; set; }
         [Required]
-        public string TaskName { get; set; }
-        [Required]
-        public int PercentageOfProject { get; set; }
+        public string TeamName { get; set; }
+        [ForeignKey("ProjectId")]
         public int ProjectId { get; set; }
-        public virtual Project Project { get; set; }
+        public Project Project { get; set; }
     }
 }

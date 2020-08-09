@@ -54,7 +54,8 @@
 
                                 <label asp-for="Status" class="control-label"></label>
                                 <span asp-validation-for="Status" class="text-danger"></span>
-                                <select asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()" class="form-control custom-select">
+                                <select asp-for="Status" 
+                                        asp-items="Html.GetEnumSelectList<Status>()" class="form-control custom-select">
                                     <option selected="selected" value="">Select one</option>
                                 </select>
                             </div>

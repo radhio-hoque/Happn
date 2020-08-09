@@ -138,6 +138,27 @@ namespace HAPPAN_MVC.Migrations
                     b.ToTable("Tasks");
                 });
 
+            modelBuilder.Entity("HAPPAN_MVC.Models.Team", b =>
+                {
+                    b.Property<int>("TeamId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TeamName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TeamId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("Team");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -277,6 +298,15 @@ namespace HAPPAN_MVC.Migrations
                 {
                     b.HasOne("HAPPAN_MVC.Models.Project", "Project")
                         .WithMany("Tasks")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("HAPPAN_MVC.Models.Team", b =>
+                {
+                    b.HasOne("HAPPAN_MVC.Models.Project", "Project")
+                        .WithMany("teams")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

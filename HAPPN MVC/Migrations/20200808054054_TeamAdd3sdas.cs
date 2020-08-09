@@ -2,7 +2,7 @@
 
 namespace HAPPAN_MVC.Migrations
 {
-    public partial class StatusTypeAdd : Migration
+    public partial class TeamAdd3sdas : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

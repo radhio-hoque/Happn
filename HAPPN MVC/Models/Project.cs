@@ -15,7 +15,8 @@ namespace HAPPAN_MVC.Models
         [Required]
         [EnumDataType(typeof(Status))]
         public Status Status { get; set; }
-        public ICollection<ProjectTask> Tasks { get; set; }
+        public virtual ICollection<ProjectTask> Tasks { get; set; }
+        public virtual ICollection<Team> teams { get; set; }
     }
 
     public enum Status
