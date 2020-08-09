@@ -19,50 +19,57 @@ namespace HAPPAN_MVC.Controllers
         }
 
         // GET: AddProjectTask/Create
-        public IActionResult Index(int id = 0)
+        public IActionResult Index(int id)
         {
-            if (id == 0)
-                return View(new ProjectTask());
-            else
-                return View(db.Tasks.Find(id));
+            ViewBag.ProjectId = id;
+            return View();
         }
 
-        //POST: AddProjectTask/Create
-       [HttpPost]
-       [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index([Bind("TaskId,TaskName,PercentageOfProject,ProjectId")] ProjectTask task)
+        ////POST: AddProjectTask/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Index(ProjectTask task)
         {
             if (ModelState.IsValid)
             {
-                if (task.TaskId == 0)
-                    db.Add(task);
-                else
-                    db.Update(task);
+                ProjectTask projectTask = new ProjectTask
+                {
+                    TaskName = task.TaskName,
+                    PercentageOfProject = task.PercentageOfProject,
+                    ProjectId = task.ProjectId
+                };
+                db.Tasks.Add(projectTask);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Info", "CurrentProject");
             }
-            return View(task);
+            return RedirectToAction("Info", "CurrentProject", new
+            {
+                projectId = task
+                    .ProjectId
+            });
         }
 
-        //public IActionResult Index(ProjectTask task)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var projectid = db.Projects.Where(b => b.ProjectId == task.ProjectId);
+        public ActionResult Edit(int id)
+        {
+            var ProjectTask = db.Tasks.Find(id);
+            return View(ProjectTask);
+        }
 
-        //        // no blog with this title yet, create a new one
-
-        //        ProjectTask projectTask = new ProjectTask
-        //        {
-        //            TaskName = task.TaskName,
-        //            PercentageOfProject = task.PercentageOfProject,
-        //            Project = project
-        //        };
-        //        db.Tasks.Add(projectTask);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Info", "CurrentProject");
-        //    }
-        //    return View(task);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(ProjectTask task)
+        {
+            if (ModelState.IsValid)
+            {
+                var Task = db.Tasks.Find(task.TaskId);
+                Task.TaskName = task.TaskName;
+                Task.PercentageOfProject = task.PercentageOfProject;
+                await db.SaveChangesAsync();
+            }
+            return RedirectToAction("Info", "CurrentProject", new
+            {
+                projectId = task
+                    .ProjectId
+            });
+        }
     }
 }

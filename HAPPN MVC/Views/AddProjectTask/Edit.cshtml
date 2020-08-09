@@ -1,0 +1,49 @@
+﻿@model HAPPAN_MVC.Models.ProjectTask
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>ProjectTask</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="TaskId" class="control-label"></label>
+                <input asp-for="TaskId" class="form-control" />
+                <span asp-validation-for="TaskId" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="TaskName" class="control-label"></label>
+                <input asp-for="TaskName" class="form-control" />
+                <span asp-validation-for="TaskName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PercentageOfProject" class="control-label"></label>
+                <input asp-for="PercentageOfProject" class="form-control" />
+                <span asp-validation-for="PercentageOfProject" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="ProjectId" class="control-label"></label>
+                <input asp-for="ProjectId" class="form-control" />
+                <span asp-validation-for="ProjectId" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

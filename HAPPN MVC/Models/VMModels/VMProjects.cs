@@ -16,6 +16,8 @@ namespace HAPPAN_MVC.Models.VMModels
         public Status Status { get; set; }
         public List<VMTask> Task { get; set; }
         public List<VMTeam> Team { get; set; }
+
+        public string message { get; set; }
     }
     public class VMTask
     {

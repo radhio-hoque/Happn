@@ -25,6 +25,7 @@ namespace HAPPAN.Controllers
                 return Redirect("/");
             }
             IList<ProjectTask> projects = hAPPAN_MVC_AuthDBContext.Tasks.Where(c => c.ProjectId == projectId).ToList();
+            ViewBag.projectId = projectId;
             return View(projects);
         }
 
@@ -32,9 +33,13 @@ namespace HAPPAN.Controllers
         public async Task<IActionResult> DeleteTask(int? id)
         {
             var task = await hAPPAN_MVC_AuthDBContext.Tasks.FindAsync(id);
+            var projectid = task.ProjectId;
             hAPPAN_MVC_AuthDBContext.Tasks.Remove(task);
             await hAPPAN_MVC_AuthDBContext.SaveChangesAsync();
-            return RedirectToAction("Info", "CurrentProject");
+            return RedirectToAction("Info", "CurrentProject", new
+            {
+                projectId = projectid
+            });
         }
 
     }
