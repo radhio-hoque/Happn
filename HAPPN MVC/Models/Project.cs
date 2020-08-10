@@ -23,6 +23,7 @@ namespace HAPPAN_MVC.Models
     {
         Pending = 0,
         Canceled = 1,
-        Success = 2
+        Done = 2,
+        OnGoing = 3
     }
 }

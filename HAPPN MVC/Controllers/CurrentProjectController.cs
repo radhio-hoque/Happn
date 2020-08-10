@@ -26,6 +26,8 @@ namespace HAPPAN.Controllers
             }
             IList<ProjectTask> projects = hAPPAN_MVC_AuthDBContext.Tasks.Where(c => c.ProjectId == projectId).ToList();
             ViewBag.projectId = projectId;
+            var projectRepo = hAPPAN_MVC_AuthDBContext.Projects.Find(projectId);
+            ViewBag.projectName = projectRepo.ProjectName;
             return View(projects);
         }
 

@@ -54,6 +54,7 @@ namespace HAPPAN_MVC.Controllers
             return View(ProjectTask);
         }
 
+        ////POST: AddProjectTask/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(ProjectTask task)
@@ -63,6 +64,7 @@ namespace HAPPAN_MVC.Controllers
                 var Task = db.Tasks.Find(task.TaskId);
                 Task.TaskName = task.TaskName;
                 Task.PercentageOfProject = task.PercentageOfProject;
+                Task.TaskProgress = task.TaskProgress;
                 await db.SaveChangesAsync();
             }
             return RedirectToAction("Info", "CurrentProject", new
