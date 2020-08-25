@@ -23,7 +23,8 @@ namespace HAPPAN_MVC.Models.VMModels
     {
         public int TaskId { get; set; }
         public string TaskName { get; set; }
-        public float Progress { get; set; }
+        public int PercentageOfProject { get; set; }
+        public int TaskProgress { get; set; }
 
     }
 

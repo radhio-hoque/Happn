@@ -57,14 +57,16 @@ namespace HAPPAN_MVC.Controllers
                 var totalNumberOfTaskProgress = taskRepo.Where(w => w.ProjectId == s.ProjectId).Count() * 100;
                 var totalTaskProgress = taskRepo.Where(w => w.ProjectId == s.ProjectId).Select(l => l.TaskProgress).Sum();
 
-                d.ProjectProgress = totalNumberOfTaskProgress != 0?((totalPercent * totalTaskProgress) / totalNumberOfTaskProgress) :0;
+                    d.ProjectProgress = totalNumberOfTaskProgress != 0 ? ((totalPercent * totalTaskProgress) / totalNumberOfTaskProgress) : 0;
                 var noProgress = d.ProjectProgress == 0 ? "No Task Added" : "";
                 d.message = noProgress;
                 d.Task = taskRepo.Where(w => w.ProjectId == s.ProjectId).Select(ss => new VMTask
                 {
                     TaskId = ss.TaskId,
                     TaskName = ss.TaskName,
-                    Progress = ss.PercentageOfProject
+                    PercentageOfProject = ss.PercentageOfProject,
+                    TaskProgress = ss.TaskProgress
+                   
                 }).ToList();
                 result.Add(d);
             }
