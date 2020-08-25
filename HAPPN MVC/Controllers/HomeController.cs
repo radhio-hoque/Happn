@@ -60,6 +60,7 @@ namespace HAPPAN_MVC.Controllers
                     d.ProjectProgress = totalNumberOfTaskProgress != 0 ? ((totalPercent * totalTaskProgress) / totalNumberOfTaskProgress) : 0;
                 var noProgress = d.ProjectProgress == 0 ? "No Task Added" : "";
                 d.message = noProgress;
+
                 d.Task = taskRepo.Where(w => w.ProjectId == s.ProjectId).Select(ss => new VMTask
                 {
                     TaskId = ss.TaskId,
