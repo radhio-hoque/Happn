@@ -82,7 +82,6 @@ namespace HAPPAN_MVC.Areas.Identity.Pages.Account
         {
             if (User.Identity.IsAuthenticated)
             {
-
                 Response.Redirect("/");
             }
 
